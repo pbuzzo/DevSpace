@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Project Info{% endblock %}
+
+{% block content %}
+    <h1>{{post.title}}</h1>
+    <h2>Project Programming Lanugage:  {{post.get_language_choice_display}}</h2>
+    <h3>Description</h3>
+    <p> {{post.description}}</p>
+    <p>Project URL: {{ post.proj_url }}</p>
+    <p>{{ post.screen_shot }}</p>
+    <p>Likes: {{post.up_vote}}</p>
+    <p>Time Submitted: {{post.post_time}}</p?>
+
+    
+
+    <a href="{% url 'home' %}">Back Home</a>
+    <br>
+    <a href="{% url 'edit_post' post.id %}">Edit Project</a>
+    
+{% endblock %}
