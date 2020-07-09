@@ -10,5 +10,8 @@ class Comment(models.Model):
     timestamp = models.DateTimeField(default=datetime.now, blank=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['text']
+
     def __str__(self):
         return self.text
