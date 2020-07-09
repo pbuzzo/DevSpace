@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils import timezone
+
+from messagesapp.models import Comment
+
 # Create your models here.
 class Post(models.Model):
     html = 'h'
@@ -28,5 +31,5 @@ class Post(models.Model):
     proj_url = models.URLField()
     screen_shot = models.ImageField()
     up_vote = models.IntegerField(default=0)
-    comment = models.ManyToManyField()
+    comment = models.ManyToManyField(Comment, related_name='comment', blank=True)
     post_time = models.DateTimeField(default=timezone.now)
