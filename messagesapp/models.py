@@ -1,5 +1,4 @@
 from django.db import models
-
 from postapp.models import Post
 from userapp.models import Developer
 from datetime import datetime

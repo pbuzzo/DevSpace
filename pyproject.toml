@@ -7,6 +7,7 @@ authors = ["Capstone Emerald"]
 [tool.poetry.dependencies]
 python = "^3.8"
 django = "^3.0.8"
+pillow = "^7.2.0"
 
 [tool.poetry.dev-dependencies]
 ipdb = "^0.13.3"
