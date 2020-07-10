@@ -1,8 +1,4 @@
 from django.db import models
-<<<<<<< HEAD
-from postapp.models import Post
-=======
->>>>>>> d90d55acece211b2ecd8a22a808b8020d162a014
 from userapp.models import Developer
 from datetime import datetime
 
