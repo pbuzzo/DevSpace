@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'phonenumber_field',
     'messagesapp',
     'notificationsapp',
     'postapp',
-    'userapp'
+    'userapp',
+    'resumeapp',
 ]
 
 MIDDLEWARE = [
@@ -127,4 +129,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
+LOGIN_URL = '/signin/'
