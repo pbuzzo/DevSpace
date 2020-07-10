@@ -9,23 +9,52 @@ class Resume(models.Model):
     phone = PhoneNumberField()
     email = models.EmailField(max_length=254)
     summary = models.TextField(max_length=1000)
-    school = models.CharField(max_length=75)
-    school_start = models.DateField(auto_now=False, auto_now_add=False)
-    school_end = models.DateField(auto_now=False, auto_now_add=False)
-    skills = models.TextField(max_length=1000)
-    organization = models.TextField(max_length=100)
-    org_city = models.CharField(max_length=50)
-    org_state = models.CharField(max_length=15)
-    job_title = models.CharField(max_length=75)
-    department = models.CharField(max_length=75)
-    job_start = models.DateField(auto_now=False, auto_now_add=False)
-    job_end = models.DateField(auto_now=False, auto_now_add=False)
-    about_list = models.TextField(max_length=100)
-    ref_name = models.CharField(max_length=50)
-    ref_job_title = models.CharField(max_length=75)
-    ref_organization = models.TextField(max_length=100)
-    ref_phone = PhoneNumberField()
-    ref_email = models.EmailField(max_length=254)
+    education = models.ForeignKey('Education', on_delete=models.CASCADE)
+    skills = models.TextField(max_length=1000, blank=True)
+    employment = models.ForeignKey('Employment', on_delete=models.CASCADE)
+    references = models.ForeignKey('References', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
+
+
+class Education(models.Model):
+    school = models.CharField(max_length=75)
+    start_date = models.DateField(auto_now=False, auto_now_add=False)
+    end_date = models.DateField(auto_now=False, auto_now_add=False)
+    details = models.ForeignKey('Details', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.school
+
+
+class Employment(models.Model):
+    organization = models.TextField(max_length=100)
+    city = models.CharField(max_length=50)
+    state = models.CharField(max_length=15)
+    role = models.CharField(max_length=75)
+    department = models.CharField(max_length=75)
+    start_date = models.DateField(auto_now=False, auto_now_add=False)
+    end_date = models.DateField(auto_now=False, auto_now_add=False)
+    details = models.ForeignKey('Details', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.organization
+
+
+class References(models.Model):
+    name = models.CharField(max_length=50)
+    role = models.CharField(max_length=75, blank=True)
+    organization = models.TextField(max_length=100, blank=True)
+    phone = PhoneNumberField()
+    email = models.EmailField(max_length=254)
+
+    def __str__(self):
+        return self.name
+
+
+class Details(models.Model):
+    details = models.TextField(max_length=100)
+
+    def __str__(self):
+        return self.details
