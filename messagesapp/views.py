@@ -1,6 +1,7 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from postapp.models import Post
 from messagesapp.models import Comment
+from userapp.models import Developer
 from django.views.generic import View
 from messagesapp.forms import CommentAddForm
 
@@ -28,6 +29,7 @@ class AddCommentView(View):
 
     def post(self, request, id):
         form = CommentAddForm(request.POST)
+        current_user = Developer.objects.get(id=request.user.id)
         if form.is_valid():
             data = form.cleaned_data
             Comment.objects.create(
@@ -36,4 +38,7 @@ class AddCommentView(View):
                 author=request.user,
                 post=Post.objects.get(id=id),
             )
+            current_user.followers.add(Developer.objects.get(id=id))
+            current_user.save()
+            
         return HttpResponseRedirect(reverse("homepage"))
