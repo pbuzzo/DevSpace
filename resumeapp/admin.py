@@ -1,3 +1,4 @@
 from django.contrib import admin
+from resumeapp.models import Resume, Education, Employment, References, Details
 
-# Register your models here.
+admin.site.register(Resume, Education, Employment, References, Details)
