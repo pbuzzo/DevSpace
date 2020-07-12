@@ -2,10 +2,12 @@ from django.shortcuts import render
 
 # Create your views here.
 def create_notification(request):
+    pass
+
 
 
 def get_notifications(request):
-    html= 
+    # html= 
     user=User.objects.get(user=request.user)
     notification = Notifications.objects.filter(to_user=user, from_user=False)
     for pings in notification:
