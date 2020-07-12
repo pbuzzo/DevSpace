@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from userapp.urls import urlpatterns as user_urls
+from postapp.urls import urlpatterns as post_urls
 from notificationsapp.urls import urlpatterns as notif_urls
 from messagesapp.urls import urlpatterns as comment_urls
 
@@ -25,5 +26,6 @@ urlpatterns = [
 ]
 
 urlpatterns += user_urls
+urlpatterns += post_urls
 urlpatterns += notif_urls
 urlpatterns += comment_urls
