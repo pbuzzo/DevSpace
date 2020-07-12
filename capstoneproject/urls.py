@@ -16,9 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from userapp.urls import urlpatterns as user_urls
+from postapp.urls import urlpatterns as post_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
 
 urlpatterns += user_urls
+urlpatterns += post_urls
