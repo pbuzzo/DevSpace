@@ -19,6 +19,7 @@ from userapp.urls import urlpatterns as user_urls
 from postapp.urls import urlpatterns as post_urls
 from notificationsapp.urls import urlpatterns as notif_urls
 from messagesapp.urls import urlpatterns as comment_urls
+from resumeapp.urls import urlpatterns as resume_urls
 
 
 urlpatterns = [
@@ -29,3 +30,4 @@ urlpatterns += user_urls
 urlpatterns += post_urls
 urlpatterns += notif_urls
 urlpatterns += comment_urls
+urlpatterns += resume_urls

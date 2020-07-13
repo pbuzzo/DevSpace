@@ -8,7 +8,7 @@ def resume(request, id):
     data = Resume.objects.get(id=id)
     return render(request, 'resume.htm', {'data': data})
 
-    
+
 @login_required
 def addresume(request):
     html = 'generic_form.htm'
@@ -21,13 +21,13 @@ def addresume(request):
                 city=data['city'],
                 state=data['state'],
                 country=data['country'],
-                phone=data['phone']
-                email=data['email']
-                summary=data['summary']
-                education=data['education']
-                skills=data['skills']
-                employment=data['employment']
-                references=data['references']
+                phone=data['phone'],
+                email=data['email'],
+                summary=data['summary'],
+                education=data['education'],
+                skills=data['skills'],
+                employment=data['employment'],
+                references=data['references'],
             )
             return HttpResponseRedirect(reverse('home'))
     

@@ -1,4 +1,5 @@
 from django import forms
+from resumeapp.models import (Resume, Education, Employment, References, Details)
 
 class ResumeForm(forms.ModelForm):
     
@@ -65,5 +66,5 @@ class DetailsForm(forms.ModelForm):
     class Meta:
         model = Details
         fields = (
-            'details'
+            'details',
         )
