@@ -8,7 +8,7 @@
     <h3>Description</h3>
     <p> {{post.description}}</p>
     <p>Project URL: {{ post.proj_url }}</p>
-    <p>{{ post.screen_shot }}</p>
+    <img src={{ post.screen_shot }}></img>
     <p>Likes: {{post.up_vote}}</p>
     <p>Time Submitted: {{post.post_time}}</p?>
 
@@ -16,6 +16,6 @@
 
     <a href="{% url 'home' %}">Back Home</a>
     <br>
-    <a href="{% url 'edit_post' post.id %}">Edit Project</a>
+    <a href="{% url 'edit_project' post.id %}">Edit Project</a>
     
 {% endblock %}
