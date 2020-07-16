@@ -1,0 +1,15 @@
+{% extends 'flow.html' %}
+{% block content %}
+
+    <div class="index-div">
+        <form action="" method='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value='Submit!'>
+        </form>
+
+        <button><a href='/signup/'>Sign Up Here!</a></button>
+        <button><a href='/signin/'>Sign In Here!</a></button>
+    </div>
+
+{% endblock%}

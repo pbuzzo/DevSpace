@@ -1,0 +1,65 @@
+/* styles.css */
+
+html,
+body {
+    height: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/*  */
+#cover {
+    background: #222 url('img/stars.jpg') center center no-repeat;
+    background-size: cover;
+    color: white;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin: auto!important;
+}
+
+#cover-captiion {
+    width: 100%;
+}
+
+.banner_div {
+    margin: auto!important;
+}
+
+
+/* index.html */
+.feature-content {
+    padding: 4rem 0;
+    overflow: hidden;
+}
+
+.feature-content img {
+    margin-bottom: -8rem;
+    overflow: hidden;
+    height: auto!important;
+}
+
+/* Media Queries for navbar, responsive design for mobile */
+@media screen and ( min-width: 991px ) {
+    .feature-content {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.pcimage img {
+    width: 50%;
+    height: 50%;
+}
+
+div.index-div {
+    width: 200%;
+    padding: 2rem;
+    border: 3.5px solid #60b0f4 !important;
+    border-radius: 2rem;
+    background: rgb(203, 210, 227)fff !important;
+}
