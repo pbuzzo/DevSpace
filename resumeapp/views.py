@@ -1,4 +1,4 @@
-from django.shortcuts import render,reverse, HttpResponseRedirect
+from django.shortcuts import render,reverse, HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from userapp.models import Developer
 from resumeapp.models import Resume, Education, Employment, References, Details
@@ -6,20 +6,20 @@ from resumeapp.forms import ResumeForm, EducationForm, EmploymentForm, Reference
 
 
 def resume(request, username):
-    username = request.user.username
     data = Developer.objects.get(username=username)
     return render(request, 'resume.htm', {'data': data})
 
 
 @login_required
-def addresume(request, id):
-    data = Developer.objects.get(id=id)
+def addresume(request):
     html = 'resume_form.htm'
     if request.method == 'POST':
         form = ResumeForm(request.POST)
+        # breakpoint()
         if form.is_valid():
             data = form.cleaned_data
-            resume = Resume.objects.create(
+            Resume.objects.create(
+                author=request.user,
                 title=data['title'],
                 name=data['name'],
                 city=data['city'],
@@ -30,38 +30,37 @@ def addresume(request, id):
                 summary=data['summary'],
                 skills=data['skills'],
             )
-            resume.save()
-            return HttpResponseRedirect(reverse('addeducation'))
+            form.save()
+            return HttpResponseRedirect(reverse('signed_in',kwargs={'username': request.user.username}))
+        return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
     
     form = ResumeForm()
     return render(request, html, {'form': form})
 
 
 @login_required
-def addeducation(request, id):
-    data = Developer.objects.get(id=id)
+def addeducation(request):
     html = 'resume_form.htm'
-    print(Resume.title)
     if request.method == 'POST':
         form = EducationForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
             Education.objects.create(
-                resume=Resume.title,
+                resume=data['resume'],
                 school=data['school'],
                 start_date=data['start_date'],
                 end_date=data['end_date'],
                 details=data['details']
             )
             return HttpResponseRedirect(reverse('addresume'))
+        return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
 
     form = EducationForm()
     return render(request, html, {'form': form})
 
 
 @login_required
-def addemployment(request, id):
-    data = Developer.objects.get(id=id)
+def addemployment(request):
     html = 'resume_form.htm'
     print(Resume.title)
     if request.method == 'POST':
@@ -86,8 +85,7 @@ def addemployment(request, id):
 
 
 @login_required
-def addreferences(request, id):
-    data = Developer.objects.get(id=id)
+def addreferences(request):
     html = 'resume_form.htm'
     print(Resume.title)
     if request.method == 'POST':

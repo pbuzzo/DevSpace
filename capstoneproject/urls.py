@@ -27,7 +27,7 @@ urlpatterns = [
 ]
 
 urlpatterns += user_urls
+urlpatterns += resume_urls
 urlpatterns += post_urls
 urlpatterns += notify_urls
 urlpatterns += comment_urls
-urlpatterns += resume_urls

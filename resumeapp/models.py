@@ -24,7 +24,6 @@ class Education(models.Model):
     school = models.CharField(max_length=75)
     start_date = models.DateField(auto_now=False, auto_now_add=False)
     end_date = models.DateField(auto_now=False, auto_now_add=False)
-    details = models.ForeignKey('Details', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.school
@@ -39,7 +38,6 @@ class Employment(models.Model):
     department = models.CharField(max_length=75)
     start_date = models.DateField(auto_now=False, auto_now_add=False)
     end_date = models.DateField(auto_now=False, auto_now_add=False)
-    details = models.ForeignKey('Details', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.organization
@@ -59,6 +57,8 @@ class References(models.Model):
 
 class Details(models.Model):
     details = models.TextField(max_length=100)
+    education = models.ForeignKey('Education', on_delete=models.CASCADE, null=True, blank=True)
+    employment = models.ForeignKey('Employment', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.details

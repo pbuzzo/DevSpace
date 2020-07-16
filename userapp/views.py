@@ -7,7 +7,6 @@ from userapp.forms import SignInForm, SignUpForm
 
 def index(request):
     info = Developer.objects.all()
-    # breakpoint()
     return render(request, 'index.htm', {'info': info})
 
 

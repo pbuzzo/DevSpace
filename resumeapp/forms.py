@@ -6,6 +6,7 @@ class ResumeForm(forms.ModelForm):
     class Meta:
         model = Resume
         fields = (
+            'author',
             'title',
             'name',
             'city',
@@ -27,7 +28,6 @@ class EducationForm(forms.ModelForm):
             'school',
             'start_date',
             'end_date',
-            'details'
         )
 
 
@@ -44,7 +44,6 @@ class EmploymentForm(forms.ModelForm):
             'department',
             'start_date',
             'end_date',
-            'details'
         )
 
 
@@ -58,7 +57,7 @@ class ReferencesForm(forms.ModelForm):
             'role',
             'organization',
             'phone',
-            'email'
+            'email',
         )
 
 
@@ -68,4 +67,6 @@ class DetailsForm(forms.ModelForm):
         model = Details
         fields = (
             'details',
+            'education',
+            'employment',
         )
