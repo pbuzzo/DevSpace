@@ -34,3 +34,14 @@ def addresume(request):
     form = ResumeForm()
     return render(request, html, {'form': form})
 
+
+@login_required
+def addeducation(request):
+    html = 'generic_form.htm'
+    if request.method == 'POST':
+        form = EducationForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            education = Education.objects.create(
+                
+            )
