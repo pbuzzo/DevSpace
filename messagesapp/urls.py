@@ -2,5 +2,5 @@ from django.urls import path
 from messagesapp import views
 
 urlpatterns = [
-    path('commentadd/<int:id>/', views.AddComment, name="comment_add_view"),
+    path('commentadd/<int:id>/', views.AddCommentView.as_view(), name="comment_add_view"),
 ]
