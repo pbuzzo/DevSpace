@@ -8,12 +8,13 @@
 <body>
     <h1>Welcome to DevSpace!</h1>
     
-    <p>{{user.display_name}}</p>
-    <p>{{user.username}}</p>
+    <p>{{info.display_name}}</p>
+    <p>{{info.username}}</p>
 
     <p>{{info}}</p>
 
-    <button><a href='/signin/'>Sign In Here!</a></button>
-    <button><a href='/signup/'>Sign Up Here!</a></button>
+    <button><a href='/{{info.username}}/resume/add'>Add Resume!</a></button>
+
+    <button><a href='/signout/'>Logout</a></button>
 </body>
 </html>

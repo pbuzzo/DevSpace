@@ -1,7 +1,10 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from userapp.models import Developer
+
 
 class Resume(models.Model):
+    author = models.ForeignKey(Developer, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
@@ -11,10 +14,7 @@ class Resume(models.Model):
     email = models.EmailField(max_length=254)
     summary = models.TextField(max_length=1000)
     skills = models.TextField(max_length=1000, blank=True)
-    # education = models.ForeignKey('Education', on_delete=models.CASCADE)
-    # employment = models.ForeignKey('Employment', on_delete=models.CASCADE)
-    # references = models.ForeignKey('References', on_delete=models.CASCADE)
-
+   
     def __str__(self):
         return self.title
 

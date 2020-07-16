@@ -6,6 +6,7 @@ class ResumeForm(forms.ModelForm):
     class Meta:
         model = Resume
         fields = (
+            'title',
             'name',
             'city',
             'state',
@@ -14,9 +15,6 @@ class ResumeForm(forms.ModelForm):
             'email',
             'summary',
             'skills',
-            # 'education',
-            # 'employment',
-            # 'references'
             )
 
 
@@ -71,12 +69,3 @@ class DetailsForm(forms.ModelForm):
         fields = (
             'details',
         )
-
-
-class ContactForm(forms.Form):
-    name = forms.CharField()
-    message = forms.CharField(widget=forms.Textarea)
-
-    def send_email(self):
-        # send email using the self.cleaned_data dictionary
-        pass

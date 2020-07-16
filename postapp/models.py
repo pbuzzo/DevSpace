@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from messagesapp.models import Comment
+from userapp.models import Developer
 
 # Create your models here.
 class Post(models.Model):
@@ -25,6 +26,7 @@ class Post(models.Model):
         default=html,
     )
 
+    author = models.ForeignKey(Developer, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField()
     proj_url = models.URLField()
