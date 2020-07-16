@@ -12,7 +12,7 @@ def index(request):
     return render(request, 'index.html', {'info': info})
 
 def signin(request):
-    htm = 'generic_form.html'
+    htm = 'generic_form_user.html'
 
     if request.method == 'POST':
         form = SignInForm(request.POST)
@@ -35,7 +35,7 @@ def signout(request):
     return HttpResponseRedirect(reverse('home'))
 
 def signup(request):
-    htm = 'generic_form.html'
+    htm = 'generic_form_user.html'
 
     if request.method == 'POST':
         form = SignUpForm(request.POST)
