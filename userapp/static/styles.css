@@ -1,0 +1,69 @@
+/* styles.css */
+
+html,
+body {
+    height: 100%;
+    background: #67b8ff;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* index.html */
+.feature-content {
+    padding: 4rem 0;
+    overflow: hidden;
+}
+
+.feature-content img {
+    margin-bottom: -8rem;
+    overflow: hidden;
+    height: auto!important;
+}
+
+/* Media Queries for navbar, responsive design for mobile */
+@media screen and ( min-width: 991px ) {
+    .feature-content {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.pcimage img {
+    width: 50%;
+    height: 50%;
+}
+
+
+/* styled page divs */
+div.index-div {
+    width: 200%;
+    padding: 2rem;
+    border: 3px solid #142635 !important;
+    border-radius: 2rem;
+    background: white !important;
+}
+
+/* Div used for signup, signin */
+div.signup-div {
+    width: 70%;
+    padding: 2rem;
+    border: 3px solid #142635 !important;
+    border-radius: 2rem;
+    background: white !important;
+}
+
+div.post-div {
+    width: 70%;
+    padding: 2rem;
+    border: 3px solid #142635 !important;
+    border-radius: 2rem;
+    background: white !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.post-div:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+  }
