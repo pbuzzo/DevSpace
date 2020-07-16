@@ -24,10 +24,10 @@ def addresume(request):
                 phone=data['phone'],
                 email=data['email'],
                 summary=data['summary'],
-                education=data['education'],
                 skills=data['skills'],
-                employment=data['employment'],
-                references=data['references'],
+                # education=data['education'],
+                # employment=data['employment'],
+                # references=data['references'],
             )
             return HttpResponseRedirect(reverse('home'))
     
@@ -42,6 +42,14 @@ def addeducation(request):
         form = EducationForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            education = Education.objects.create(
-                
+            Education.objects.create(
+                resume=data['resume'],
+                school=data['school'],
+                start_date=data['start_date'],
+                end_date=data['end_date'],
+                details=data['details']
             )
+            return HttpResponseRedirect(reverse('addresume'))
+
+    form = EducationForm()
+    return render(request, html, {'form': form})
