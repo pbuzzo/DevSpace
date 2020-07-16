@@ -24,13 +24,33 @@ def addresume(request):
                 phone=data['phone'],
                 email=data['email'],
                 summary=data['summary'],
-                education=data['education'],
                 skills=data['skills'],
-                employment=data['employment'],
-                references=data['references'],
+                # education=data['education'],
+                # employment=data['employment'],
+                # references=data['references'],
             )
             return HttpResponseRedirect(reverse('home'))
     
     form = ResumeForm()
     return render(request, html, {'form': form})
 
+
+@login_required
+def addeducation(request):
+    html = 'generic_form.htm'
+
+    if request.method == 'POST':
+        form = EducationForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            RecipeItem.objects.create(
+                resume=data['resume'],
+                school=data['school'],
+                start_date=data['start_date'],
+                end_date=data['end_date'],
+                details=data['details']
+            )
+            return HttpResponseRedirect(reverse('addresume'))
+
+    form = EducationForm()
+    return render(request, html, {'form': form})

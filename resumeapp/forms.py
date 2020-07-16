@@ -13,10 +13,10 @@ class ResumeForm(forms.ModelForm):
             'phone',
             'email',
             'summary',
-            'education',
             'skills',
-            'employment',
-            'references'
+            # 'education',
+            # 'employment',
+            # 'references'
             )
 
 
@@ -25,6 +25,7 @@ class EducationForm(forms.ModelForm):
     class Meta:
         model = Education
         fields = (
+            'resume',
             'school',
             'start_date',
             'end_date',
@@ -37,6 +38,7 @@ class EmploymentForm(forms.ModelForm):
     class Meta:
         model = Employment
         fields = (
+            'resume',
             'organization',
             'city',
             'state',
@@ -53,6 +55,7 @@ class ReferencesForm(forms.ModelForm):
     class Meta:
         model = References
         fields = (
+            'resume',
             'name',
             'role',
             'organization',
@@ -68,3 +71,12 @@ class DetailsForm(forms.ModelForm):
         fields = (
             'details',
         )
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField()
+    message = forms.CharField(widget=forms.Textarea)
+
+    def send_email(self):
+        # send email using the self.cleaned_data dictionary
+        pass
