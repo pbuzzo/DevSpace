@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-
+from messagesapp.models import Comment
 from postapp.forms import AddPostForm, EditPostForm
 from postapp.models import Post
 
@@ -18,7 +18,8 @@ def addpost(request):
 
 def post(request, id):
     post = get_object_or_404(Post, pk=id)
-    return render(request, 'post.html', {'post': post})
+    comments = Comment.objects.filter(parent_comment=post)
+    return render(request, 'post.html', {'post': post, 'comments': comments})
 
 @login_required
 def post_edit(request, id):

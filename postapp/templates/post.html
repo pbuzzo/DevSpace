@@ -11,12 +11,23 @@
         <p>Project URL: {{ post.proj_url }}</p>
         <p>{{ post.screen_shot }}</p>
         <p>Likes: {{post.up_vote}}</p>
-        <p>Time Submitted: {{post.post_time}}</p?>
-
-        
-
-        <a href="{% url 'home' %}">Back Home</a>
-        <a href="{% url 'post_edit' post.id %}">Edit Project</a>
+        <p>Time Submitted: {{post.post_time}}</p>
+        <br>
+        <button><a href="{% url 'home' %}">Back Home</a></button>
+        <button><a href="{% url 'post_edit' post.id %}">Edit Project</a></button>
+        <br>
+        <hr>
+        <br>
+        {% if comments %}
+            <h4>Comments<h4>
+            {% for item in comments%}
+                <div class="comment_div">
+                    <h5>{{ item.text}}<h5><br>
+                    <p>By: {{ item.author }}</p>
+                </div>
+                <br>
+            {% endfor %}
+        {% endif %}
     </div>
     <br>
     
