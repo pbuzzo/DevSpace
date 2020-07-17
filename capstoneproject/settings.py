@@ -135,4 +135,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# https://www.youtube.com/watch?v=ejiNlrUzZI0
+# import for postapp screenshots
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 LOGIN_URL = '/signin/'
