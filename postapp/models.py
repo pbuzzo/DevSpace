@@ -27,7 +27,8 @@ class Post(models.Model):
 
     title = models.CharField(max_length=200)
     description = models.TextField()
-    proj_url = models.URLField()
+    live_url = models.URLField()
+    repo_url = models.URLField()
     screen_shot = models.ImageField()
     up_vote = models.IntegerField(default=0)
     comment = models.ManyToManyField(Comment, blank=True)
