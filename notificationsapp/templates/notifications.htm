@@ -1,8 +1,8 @@
 <h4>You have {{ notifications_count }} unread notifications</h4>
-{% if notifications_count %}
+{% for notify in notification %}
 <ul>
-    {% for notify in notification %}
-    
-    {% endfor %}
-{% endif %}      
+    <li>{{notify.user}}</li>
+    <li>{{notify.data_created}}</li>
+</ul>
+{% endfor %}     
 <a href="/">Home</a>
