@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 
 # view to grab all comments for a specific post based on post ID
-@login_required
+# @login_required
 class GetCommentsView(View):
     def get(self, request, id):
         html = 'index.html'
@@ -24,12 +24,13 @@ class GetCommentsView(View):
 
 
 # view to add comment based on post ID
-@login_required
+# @login_required --> fix here: https://bit.ly/2OwJaZk
 class AddComment(View):
-    def get(self, request):
+    def get(self, request, id):
         html = 'comment_form.html'
         form = CommentAddForm()
-        return render(request, html, {'form': form})
+        post = Post.objects.get(id=id)
+        return render(request, html, {'form': form, "post": post})
 
     def post(self, request, id):
         form = CommentAddForm(request.POST)
@@ -41,11 +42,11 @@ class AddComment(View):
                     text=data['text'],
                     timestamp=data['timestamp'],
                     author=request.user,
-                    post=Post.objects.get(id=id),
+                    parent_comment=Post.objects.get(id=id),
                 )
-                current_user.followers.add(Developer.objects.get(id=id))
+                # current_user.followers.add(Developer.objects.get(id=id))
                 current_user.save()
 
-            return HttpResponseRedirect(reverse("homepage"))
+            return HttpResponseRedirect(reverse("home"))
 
-        return HttpResponseRedirect(reverse("homepage"))
+        return HttpResponseRedirect(reverse("home"))
