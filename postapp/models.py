@@ -27,8 +27,9 @@ class Post(models.Model):
 
     title = models.CharField(max_length=200)
     description = models.TextField()
-    proj_url = models.URLField()
-    screen_shot = models.ImageField()
+    live_url = models.URLField()
+    repo_url = models.URLField()
+    screen_shot = models.ImageField(upload_to='media/post_screenshots')
     up_vote = models.IntegerField(default=0)
     comment = models.ManyToManyField(Comment, blank=True)
     post_time = models.DateTimeField(default=timezone.now)
