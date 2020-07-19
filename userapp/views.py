@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 from userapp.models import Developer
 from userapp.forms import SignInForm, SignUpForm
+from postapp.models import Post
 
 def index(request):
     info = Developer.objects.all()
@@ -13,11 +14,12 @@ def index(request):
 @login_required
 def signed_in(request, username):
     info = Developer.objects.get(username=request.user.username)
-    return render(request, 'signedin.htm', {'info': info})
+    post = Post.objects.get(author=username)
+    return render(request, 'signedin.html', {'info': info})
 
 
 def signin(request):
-    htm = 'generic_form.html'
+    htm = 'generic_form_user.html'
     url = '/%s/' % request.user.username
     if request.method == 'POST':
         form = SignInForm(request.POST)
