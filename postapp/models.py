@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from messagesapp.models import Comment
-from userapp.models import Developer
+# from messagesapp.models import Comment
 
 # Create your models here.
 class Post(models.Model):
@@ -29,10 +28,11 @@ class Post(models.Model):
     author = models.ForeignKey(Developer, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField()
-    proj_url = models.URLField()
-    screen_shot = models.ImageField()
+    live_url = models.URLField()
+    repo_url = models.URLField()
+    screen_shot = models.ImageField(upload_to='media/post_screenshots')
     up_vote = models.IntegerField(default=0)
-    comment = models.ManyToManyField(Comment, blank=True)
+    # comment = models.ManyToManyField(Comment, blank=True)
     post_time = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
