@@ -21,14 +21,15 @@ from userapp.urls import urlpatterns as user_urls
 from postapp.urls import urlpatterns as post_urls
 from notificationsapp.urls import urlpatterns as notify_urls
 from messagesapp.urls import urlpatterns as comment_urls
-# from resumeapp.urls import urlpatterns as resume_urls
+from resumeapp.urls import urlpatterns as resume_urls
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += user_urls
-# urlpatterns += resume_urls
+urlpatterns += resume_urls
 urlpatterns += post_urls
 urlpatterns += notify_urls
 urlpatterns += comment_urls
