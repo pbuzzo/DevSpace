@@ -31,7 +31,7 @@ def addresume(request):
                 skills=data['skills'],
             )
             form.save()
-            return HttpResponseRedirect(reverse('signed_in',kwargs={'username': request.user.username}))
+            return HttpResponseRedirect(reverse('resume',kwargs={'username': request.user.username}))
         return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
     
     form = ResumeForm()
@@ -50,9 +50,8 @@ def addeducation(request):
                 school=data['school'],
                 start_date=data['start_date'],
                 end_date=data['end_date'],
-                details=data['details']
             )
-            return HttpResponseRedirect(reverse('addresume'))
+            return HttpResponseRedirect(reverse('resume',kwargs={'username': request.user.username}))
         return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
 
     form = EducationForm()
@@ -68,7 +67,7 @@ def addemployment(request):
         if form.is_valid():
             data = form.cleaned_data
             Employment.objects.create(
-                resume=Resume.title,
+                resume=data['resume'],
                 organization=data['organization'],
                 city=data['city'],
                 state=data['state'],
@@ -76,9 +75,9 @@ def addemployment(request):
                 department=data['department'],
                 start_date=data['start_date'],
                 end_date=data['end_date'],
-                details=data['details']
             )
-            return HttpResponseRedirect(reverse('addresume'))
+            return HttpResponseRedirect(reverse('resume',kwargs={'username': request.user.username}))
+        return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
 
     form = EmploymentForm()
     return render(request, html, {'form': form})
@@ -93,14 +92,37 @@ def addreferences(request):
         if form.is_valid():
             data = form.cleaned_data
             References.objects.create(
-                resume=Resume.title,
+                resume=data['resume'],
                 name=data['name'],
                 role=data['role'],
                 organization=data['organization'],
                 phone=data['phone'],
                 email=data['email']
             )
-            return HttpResponseRedirect(reverse('addresume'))
+            return HttpResponseRedirect(reverse('resume',kwargs={'username': request.user.username}))
+        return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
 
     form = ReferencesForm()
     return render(request, html, {'form': form})
+
+
+# @login_required
+# def addreferences(request):
+#     html = 'resume_form.htm'
+#     print(Resume.title)
+#     if request.method == 'POST':
+#         form = ReferencesForm(request.POST)
+#         if form.is_valid():
+#             data = form.cleaned_data
+#             References.objects.create(
+#                 resume=Resume.title,
+#                 name=data['name'],
+#                 role=data['role'],
+#                 organization=data['organization'],
+#                 phone=data['phone'],
+#                 email=data['email']
+#             )
+#             return HttpResponseRedirect(reverse('resume',kwargs={'username': request.user.username}))
+
+#     form = ReferencesForm()
+#     return render(request, html, {'form': form})

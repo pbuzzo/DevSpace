@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-# from messagesapp.models import Comment
+from userapp.models import Developer
 
 # Create your models here.
 class Post(models.Model):
