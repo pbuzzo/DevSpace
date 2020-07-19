@@ -103,19 +103,20 @@ def addreferences(request):
     return render(request, html, {'form': form})
 
 
-# @login_required
-# def adddetails(request):
-#     html = 'resume_form.html'
-#     if request.method == 'POST':
-#         form = DetailsForm(request.POST)
-#         if form.is_valid():
-#             data = form.cleaned_data
-#             Details.objects.create(
-#                 details=data['details],
-#                 education=data['education'],
-#                 employment=data['employment'],
-#             )
-#             return HttpResponseRedirect(reverse('resume',kwargs={'username': request.user.username}))
-#         return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
-#     form = DetailsForm()
-#     return render(request, html, {'form': form})
+@login_required
+def adddetails(request):
+    html = 'resume_form.html'
+    if request.method == 'POST':
+        form = DetailsForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            Details.objects.create(
+                details=data['details'],
+                education=data['education'],
+                employment=data['employment'],
+            )
+            return HttpResponseRedirect(reverse('resume',kwargs={'username': request.user.username}))
+        return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
+    
+    form = DetailsForm()
+    return render(request, html, {'form': form})
