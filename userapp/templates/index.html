@@ -1,0 +1,24 @@
+{% extends 'flow.html' %}
+{% block content %}
+
+
+    <section id="feature-one">
+        <div class="container">
+            <div class="row">
+                <div class="row feature-content">
+                    <div class="mr-3 ml-3 col-lg-6">
+                        <div class="index-div">
+                            <h1>Welcome to DevSpace!</h1>
+                            <p>{{user.display_name}}</p>
+                            <p>{{user.username}}</p>
+                            <p>{{info}}</p>
+                            <button><a href='/signout/'>Logout</a></button>
+                        </div>
+                    </div>
+                    <div class="mr-3 ml-3 col-lg-5 col-lg-offset-1"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

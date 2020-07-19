@@ -9,11 +9,11 @@ from userapp.forms import SignInForm, SignUpForm
 @login_required
 def index(request):
     info = Developer.objects.all()
-    return render(request, 'index.htm', {'info': info})
+    return render(request, 'index.html', {'info': info})
 
 def signin(request):
-    htm = 'generic_form.htm'
-    
+    htm = 'generic_form_user.html'
+
     if request.method == 'POST':
         form = SignInForm(request.POST)
         if form.is_valid():
@@ -35,7 +35,7 @@ def signout(request):
     return HttpResponseRedirect(reverse('home'))
 
 def signup(request):
-    htm = 'generic_form.htm'
+    htm = 'generic_form_user.html'
 
     if request.method == 'POST':
         form = SignUpForm(request.POST)
