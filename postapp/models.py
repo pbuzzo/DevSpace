@@ -30,7 +30,7 @@ class Post(models.Model):
     description = models.TextField()
     live_url = models.URLField()
     repo_url = models.URLField()
-    screen_shot = models.ImageField(upload_to='media/post_screenshots')
+    screen_shot = models.ImageField(upload_to='post_screenshots')
     up_vote = models.IntegerField(default=0)
     # comment = models.ManyToManyField(Comment, blank=True)
     post_time = models.DateTimeField(default=timezone.now)
