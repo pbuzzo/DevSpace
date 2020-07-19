@@ -4,18 +4,18 @@ from django.contrib.auth.decorators import login_required
 
 from userapp.models import Developer
 from userapp.forms import SignInForm, SignUpForm
-from postapp.models import Post
+# from postapp.models import Post
 
 def index(request):
     info = Developer.objects.all()
     return render(request, 'index.html', {'info': info})
 
 
-@login_required
-def signed_in(request, username):
-    info = Developer.objects.get(username=request.user.username)
-    # post = Post.objects.get(author=username)
-    return render(request, 'signedin.html', {'info': info})
+# @login_required
+# def signed_in(request, username):
+#     info = Developer.objects.get(username=request.user.username)
+#     # post = Post.objects.get(author=username)
+#     return render(request, 'signedin.html', {'info': info})
 
 
 def signin(request):
@@ -29,7 +29,7 @@ def signin(request):
                 )
             if user:
                 login(request, user)
-                return HttpResponseRedirect(reverse('signed_in', kwargs={'username': request.user.username}))
+                return HttpResponseRedirect(reverse('home'))
             return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
 
     form = SignInForm()
