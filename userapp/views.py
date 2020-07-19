@@ -4,16 +4,22 @@ from django.contrib.auth.decorators import login_required
 
 from userapp.models import Developer
 from userapp.forms import SignInForm, SignUpForm
+from postapp.models import Post
 
-# Create your views here.
-@login_required
 def index(request):
     info = Developer.objects.all()
-    return render(request, 'index.htm', {'info': info})
+    return render(request, 'index.html', {'info': info})
+
+
+@login_required
+def signed_in(request, username):
+    info = Developer.objects.get(username=request.user.username)
+    # post = Post.objects.get(author=username)
+    return render(request, 'signedin.html', {'info': info})
+
 
 def signin(request):
-    htm = 'generic_form.htm'
-    
+    htm = 'generic_form_user.html'
     if request.method == 'POST':
         form = SignInForm(request.POST)
         if form.is_valid():
@@ -23,9 +29,8 @@ def signin(request):
                 )
             if user:
                 login(request, user)
-                return HttpResponseRedirect(
-                    request.GET.get('next', reverse('home'))
-                )
+                return HttpResponseRedirect(reverse('signed_in', kwargs={'username': request.user.username}))
+
     form = SignInForm()
     return render(request, htm, {'form': form})
 
@@ -35,7 +40,7 @@ def signout(request):
     return HttpResponseRedirect(reverse('home'))
 
 def signup(request):
-    htm = 'generic_form.htm'
+    htm = 'generic_form_user.html'
 
     if request.method == 'POST':
         form = SignUpForm(request.POST)

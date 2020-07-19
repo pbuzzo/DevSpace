@@ -1,21 +1,36 @@
-{% extends "base.html" %}
+{% extends "flow.html" %}
 
 {% block title %}Project Info{% endblock %}
 
 {% block content %}
-    <h1>{{post.title}}</h1>
-    <h2>Project Programming Lanugage:  {{post.get_language_choice_display}}</h2>
-    <h3>Description</h3>
-    <p> {{post.description}}</p>
-    <p>Project URL: {{ post.proj_url }}</p>
-    <p>{{ post.screen_shot }}</p>
-    <p>Likes: {{post.up_vote}}</p>
-    <p>Time Submitted: {{post.post_time}}</p?>
-
-    
-
-    <a href="{% url 'home' %}">Back Home</a>
+    <div style="margin-top: 2rem; margin-left: 2rem;" class="post-div">
+        <h3>{{post.title}}</h3>
+        <h5>Project Programming Lanugage:  {{post.get_language_choice_display}}</h5>
+        <h5>Description</h5>
+        <p> {{post.description}}</p>
+        <p>Project Live URL: {{ post.live_url }}</p>
+        <p>Project Repository URL: {{ post.repo_url }}</p>
+        <p><img src='{{ post.screen_shot.url }}' ></p>
+        <p>Likes: {{post.up_vote}}</p>
+        <p>Time Submitted: {{post.post_time}}</p>
+        <br>
+        <button><a href="{% url 'home' %}">Back Home</a></button>
+        <button><a href="{% url 'post_edit' post.id %}">Edit Project</a></button>
+        <br>
+        <hr>
+        <br>
+        {% if comments %}
+            <h4>Comments<h4>
+            {% for item in comments%}
+                <div class="comment_div">
+                    <h5>{{ item.text}}<h5><br>
+                    <p>By: {{ item.author }}</p>
+                </div>
+                <br>
+            {% endfor %}
+        {% endif %}
+    </div>
     <br>
-    <a href="{% url 'edit_post' post.id %}">Edit Project</a>
+    
     
 {% endblock %}
