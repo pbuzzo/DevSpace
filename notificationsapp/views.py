@@ -26,7 +26,7 @@ def create_notification(request):
 
 
 def get_notifications(request):
-    html= notifications.htm
+    html= 'notifications.htm'
     user= Developer.objects.get(user=request.user)
     notification = Notifications.objects.filter(to_user=user, from_user=False)
     notifications_count=len(notification)

@@ -11,16 +11,23 @@ def index(request):
     return render(request, 'index.html', {'info': info})
 
 
+<<<<<<< HEAD
 # @login_required
 # def signed_in(request, username):
 #     info = Developer.objects.get(username=request.user.username)
 #     post = Post.objects.get(author=username)
 #     return render(request, 'signedin.html', {'info': info})
+=======
+@login_required
+def signed_in(request, username):
+    info = Developer.objects.get(username=request.user.username)
+    # post = Post.objects.get(author=username)
+    return render(request, 'signedin.html', {'info': info})
+>>>>>>> e0374f705f9b4341d30c521284c54f3fc33ac69b
 
 
 def signin(request):
     htm = 'generic_form_user.html'
-    url = '/%s/' % request.user.username
     if request.method == 'POST':
         form = SignInForm(request.POST)
         if form.is_valid():
@@ -30,7 +37,7 @@ def signin(request):
                 )
             if user:
                 login(request, user)
-                return HttpResponseRedirect(url)
+                return HttpResponseRedirect(reverse('signed_in', kwargs={'username': request.user.username}))
 
     form = SignInForm()
     return render(request, htm, {'form': form})
