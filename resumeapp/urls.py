@@ -7,4 +7,5 @@ urlpatterns = [
     path('resume/add/education/', views.addeducation, name='addeducation'),
     path('resume/add/employment/', views.addemployment, name='addemployment'),
     path('resume/add/references/', views.addreferences, name='addreferences'),
+    path('resume/add/details/', views.adddetails, name='adddetails'),
 ]

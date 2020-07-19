@@ -3,8 +3,10 @@
 
 <h1>{{data.display_name}}'s Resume</h1>
 
+{% if user.is_authenticated %}
 <button><a href='/resume/add/education/'>Add Education!</a></button>
 <button><a href='/resume/add/employment/'>Add Employment!</a></button>
 <button><a href='/resume/add/references/'>Add References!</a></button>
+{% endif %}
 
 {% endblock %}
