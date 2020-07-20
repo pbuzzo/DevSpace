@@ -13,9 +13,8 @@
         <p><img src='{{ post.screen_shot.url }}' ></p>
         <p>Likes: {{post.up_vote}}</p>
         <p>Time Submitted: {{post.post_time}}</p>
-        <br>
-        <button><a href="{% url 'home' %}">Back Home</a></button>
-        <button><a href="{% url 'post_edit' post.id %}">Edit Project</a></button>
+        <!-- if user is auth -->
+        <button><a href="{% url 'post_edit' post.id %}">Edit Project</a></>
         <br>
         <hr>
         <br>
