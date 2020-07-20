@@ -7,7 +7,9 @@ from resumeapp.forms import ResumeForm, EducationForm, EmploymentForm, Reference
 
 def resume(request, username):
     data = Developer.objects.get(username=username)
-    return render(request, 'resume.html', {'data': data})
+    resume = Resume.objects.filter(author=request.user).first()
+    print(resume)
+    return render(request, 'resume.html', {'data': data, 'resume': resume })
 
 
 @login_required

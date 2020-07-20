@@ -11,11 +11,11 @@ def index(request):
     return render(request, 'index.html', {'info': info})
 
 
-@login_required
-def signed_in(request, username):
-    info = Developer.objects.get(username=request.user.username)
-    # post = Post.objects.get(author=username)
-    return render(request, 'signedin.html', {'info': info})
+# @login_required
+# def signed_in(request, username):
+#     info = Developer.objects.get(username=request.user.username)
+#     # post = Post.objects.get(author=username)
+#     return render(request, 'signedin.html', {'info': info})
 
 
 def signin(request):

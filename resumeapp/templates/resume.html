@@ -2,6 +2,20 @@
 {% block content %}
 
 <h1>{{data.display_name}}'s Resume</h1>
+{{resume.title}}<br>
+{{resume.name}}<br>
+{{resume.city}},
+{{resume.state}},
+{{resume.country}}<br>
+{{resume.phone}}<br>
+{{resume.email}}<br>
+{{resume.summary}}<br>
+{{resume.education}}<br>
+{{resume.skills}}<br>
+{{resume.employment}}<br>
+{{resume.references}}
+
+{{data}}
 
 <button><a href='/resume/add/education/'>Add Education!</a></button>
 <button><a href='/resume/add/employment/'>Add Employment!</a></button>
