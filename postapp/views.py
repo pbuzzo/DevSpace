@@ -10,21 +10,9 @@ from django.http import HttpResponseRedirect
 # @login_required
 def addpost(request):
     if request.method == 'POST':
-        form = AddPostForm(request.POST)
+        form = AddPostForm(request.POST, request.FILES)
         if form.is_valid():
-            data = form.cleaned_data
-            Post.objects.create(
-                    post_type=data['post_type'],
-                    author=data['author'],
-                    title=data['title'],
-                    description=data['description'],
-                    live_url=data['live_url'],
-                    repo_url=data['repo_url'],
-                    screen_shot=data['screen_shot'],
-                    up_vote=data['up_vote'],
-                    post_time=data['post_time'],
-            )
-            # form.save()
+            form.save()
             return redirect('home')
     else:
         form = AddPostForm()
