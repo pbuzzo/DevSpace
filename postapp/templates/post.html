@@ -17,17 +17,6 @@
         <button><a href="{% url 'post_edit' post.id %}">Edit Project</a></>
         <br>
         <hr>
-        <br>
-        {% if comments %}
-            <h4>Comments<h4>
-            {% for item in comments%}
-                <div class="comment_div">
-                    <h5>{{ item.text}}<h5><br>
-                    <p>By: {{ item.author }}</p>
-                </div>
-                <br>
-            {% endfor %}
-        {% endif %}
     </div>
     <br>
     
