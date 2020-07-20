@@ -3,7 +3,7 @@
 
     <div style="margin-top: 2rem; margin-left: 2rem;" class="signup-div">
         <h1>Add A Project</h1><br>
-        <form action="" method="post">
+        <form method="post" action="" enctype="multipart/form-data">
             {{ form.as_p }}
             {% csrf_token %}
             <input type="submit" value="Submit!">

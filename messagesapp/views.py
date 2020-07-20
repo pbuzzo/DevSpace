@@ -45,7 +45,7 @@ class AddComment(View):
                     parent_comment=Post.objects.get(id=id),
                 )
                 # current_user.followers.add(Developer.objects.get(id=id))
-                current_user.save()
+                # current_user.save()
 
             return HttpResponseRedirect(reverse("home"))
 

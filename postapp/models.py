@@ -28,9 +28,9 @@ class Post(models.Model):
     author = models.ForeignKey(Developer, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField()
-    live_url = models.URLField()
-    repo_url = models.URLField()
-    screen_shot = models.ImageField(upload_to='post_screenshots')
+    live_url = models.URLField(blank=True)
+    repo_url = models.URLField(blank=True)
+    screen_shot = models.ImageField(blank=True, upload_to='media/post_screenshots/')
     up_vote = models.IntegerField(default=0)
     post_time = models.DateTimeField(default=timezone.now)
 
