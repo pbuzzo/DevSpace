@@ -21,7 +21,7 @@ def post(request, id):
     comments = Comment.objects.filter(parent_comment=post)
     return render(request, 'post.html', {'post': post, 'comments': comments})
 
-# @login_required
+@login_required
 def post_edit(request, id):
     post = get_object_or_404(Post, pk=id)
     if request.method == "POST":
