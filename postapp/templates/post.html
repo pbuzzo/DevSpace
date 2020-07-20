@@ -1,4 +1,4 @@
-{% extends "flow.html" %}
+<!-- {% extends "flow.html" %} -->
 
 {% block title %}Project Info{% endblock %}
 
@@ -16,6 +16,7 @@
         <br>
         <button><a href="{% url 'home' %}">Back Home</a></button>
         <button><a href="{% url 'post_edit' post.id %}">Edit Project</a></button>
+        <button><a href="{% url 'comment_add_view' post.id %}">Comment on Project</a></button>
         <br>
         <hr>
         <br>
@@ -25,6 +26,7 @@
                 <div class="comment_div">
                     <h5>{{ item.text}}<h5><br>
                     <p>By: {{ item.author }}</p>
+                    <p>Time: {{ item.timestamp }}</p>
                 </div>
                 <br>
             {% endfor %}

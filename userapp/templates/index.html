@@ -9,9 +9,11 @@
                     <div class="mr-3 ml-3 col-lg-6">
                         <div class="index-div">
                             <h1>Welcome to DevSpace!</h1>
-
-                            <p>{{info}}</p>
-                            <p>{{posts}}</p>
+                            {% for item in info %}
+                                <p>{{ item.display_name }}</p>
+                                <p>{{ item.github_link }}</p>
+                                <p>{{ item.bio }}</p>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="mr-3 ml-3 col-lg-5 col-lg-offset-1"></div>

@@ -1,4 +1,4 @@
-from django.shortcuts import render,reverse, HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, reverse, HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from userapp.models import Developer
 from resumeapp.models import Resume, Education, Employment, References, Details
@@ -32,7 +32,7 @@ def addresume(request):
                 skills=data['skills'],
             )
             form.save()
-            return HttpResponseRedirect(reverse('resume',kwargs={'username': request.user.username}))
+            return HttpResponseRedirect(reverse('resume', kwargs={'username': request.user.username}))
         return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
     
     form = ResumeForm()
