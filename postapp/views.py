@@ -5,7 +5,7 @@ from postapp.forms import AddPostForm, EditPostForm
 from postapp.models import Post
 
 # Create your views here.
-@login_required
+# @login_required
 def addpost(request):
     if request.method == 'POST':
         form = AddPostForm(request.POST)
