@@ -1,15 +1,24 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.views.generic import View
 
 from userapp.models import Developer
 from userapp.forms import SignInForm, SignUpForm
 from postapp.models import Post
 
-def index(request):
-    info = Developer.objects.all()
-    return render(request, 'index.html', {'info': info})
 
+class IndexView(View):
+    def get(self, request):
+        html = 'index.html'
+        info = Developer.objects.all()
+        posts = Post.objects.filter(author=request.user.id)
+
+        return render(
+            request,
+            html,
+            {'info': info}
+        )
 
 # @login_required
 # def signed_in(request, username):
@@ -29,8 +38,7 @@ def signin(request):
                 )
             if user:
                 login(request, user)
-                return HttpResponseRedirect(reverse('signed_in', kwargs={'username': request.user.username}))
-            return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
+                return HttpResponseRedirect(reverse('home'))
 
     form = SignInForm()
     return render(request, htm, {'form': form})
