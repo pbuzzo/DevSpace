@@ -26,8 +26,8 @@ def create_notification(request):
 
 
 def get_notifications(request):
-    html= 'notifications.htm'
-    user= Developer.objects.get(user=request.user)
+    html= 'notifications.html'
+    user= Developer.objects.get(id=request.user.id)
     notification = Notifications.objects.filter(to_user=user, from_user=False)
     notifications_count=len(notification)
     for pings in notification:

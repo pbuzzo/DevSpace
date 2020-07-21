@@ -24,7 +24,7 @@
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/">My Profile</a>
+                        <a class="nav-link" href="/developer/{{request.user.id}}">My Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/{{user.username}}/resume">Resume</a>
@@ -33,7 +33,7 @@
                         <a class="nav-link" href="/add_project/">Add Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Following</a>
+                        <a class="nav-link" href="/notifications/">Notifications</a>
                     </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
