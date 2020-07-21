@@ -2,6 +2,7 @@ from django.shortcuts import render, reverse, HttpResponseRedirect, get_object_o
 from postapp.models import Post
 from messagesapp.models import Comment
 from userapp.models import Developer
+from notificationsapp.models import Notifications
 from django.views.generic import View
 from messagesapp.forms import CommentAddForm
 from django.contrib.auth.decorators import login_required
@@ -43,6 +44,11 @@ class AddComment(View):
                     timestamp=data['timestamp'],
                     author=request.user,
                     parent_comment=Post.objects.get(id=id),
+                )
+                parent_post = Post.objects.get(id=id)
+                Notifications.objects.create(
+                    data_created = Comment.objects.get(text=data['text']),
+                    to_user = parent_post.author
                 )
                 # current_user.followers.add(Developer.objects.get(id=id))
                 # current_user.save()

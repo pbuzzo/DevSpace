@@ -40,4 +40,4 @@ def up_vote(request, post_id):
     post = Post.objects.get(id=post_id)
     post.up_vote += 1
     post.save()
-    return HttpResponseRedirect(reverse('post', kwargs={'post_id': post_id}))
+    return HttpResponseRedirect(reverse('post', args=(post_id,)))

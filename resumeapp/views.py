@@ -34,7 +34,7 @@ def addresume(request):
                 summary=data['summary'],
                 skills=data['skills'],
             )
-            form.save()
+            # form.save()
             return HttpResponseRedirect(reverse('resume', kwargs={'username': request.user.username}))
         return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
     
