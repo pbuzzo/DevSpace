@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 
 
 # Create your views here.
-# @login_required
+@login_required
 def addpost(request):
     if request.method == 'POST':
         form = AddPostForm(request.POST, request.FILES)
@@ -35,3 +35,9 @@ def post_edit(request, id):
 
     form = EditPostForm(instance=post)
     return render(request, 'generic_form.html', {'form': form})
+
+def up_vote(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.up_vote += 1
+    post.save()
+    return HttpResponseRedirect(reverse('post', kwargs={'post_id': post_id}))
