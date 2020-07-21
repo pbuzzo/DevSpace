@@ -1,4 +1,5 @@
 from django import forms
+from userapp.models import Developer
 
 class SignInForm(forms.Form):
     username = forms.CharField(max_length=50)
@@ -11,11 +12,16 @@ class SignUpForm(forms.Form):
     github_link = forms.URLField(max_length=200, required=False)
 
 
-class EditUserForm(forms.Form):
-    display_name = forms.CharField(max_length=40)
-    github_link = forms.URLField(max_length=200, required=False)
-    headshot = forms.ImageField(blank=True, upload_to='media/headshots/')
-    bio = forms.TextField(max_length=1000)
+class EditUserForm(forms.ModelForm):
+    
+    class Meta:
+        model = Developer
+        fields = (
+            'display_name',
+            'headshot',
+            'github_link',
+            'bio',
+        )
 
     
 # class ContactForm(forms.Form):
