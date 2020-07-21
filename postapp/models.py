@@ -32,7 +32,6 @@ class Post(models.Model):
     repo_url = models.URLField(blank=True)
     screen_shot = models.ImageField(blank=True, upload_to='media/post_screenshots/')
     up_vote = models.IntegerField(default=0)
-    # comment = models.ManyToManyField(Comment, blank=True)
     post_time = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

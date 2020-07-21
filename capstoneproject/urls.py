@@ -29,7 +29,7 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += user_urls
-urlpatterns += resume_urls
 urlpatterns += post_urls
+urlpatterns += resume_urls
 urlpatterns += notify_urls
 urlpatterns += comment_urls
