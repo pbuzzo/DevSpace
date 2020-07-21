@@ -34,4 +34,4 @@ def get_notifications(request):
         pings.from_user = True
         pings.save()
 
-    return render(request, html, {'user': user, 'notification':notification})
+    return render(request, html, {'user': user, 'notification': notification, 'notifications_count': notifications_count})
