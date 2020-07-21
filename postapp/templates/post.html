@@ -11,7 +11,7 @@
             <img width="100%" height="300" src='{{ post.screen_shot.url }}' >
             <div class="card-body">
             <h3>{{post.title}}</h3>
-            <h5>Project Programming Lanugage:  {{post.get_language_choice_display}}</h5>
+            <h5>Project Programming Lanugage:  {{ post.get_post_type_display }}</h5>
             <h5>Description</h5>
             <p> {{post.description}}</p>
             <p>Likes: {{post.up_vote}}</p>
@@ -19,6 +19,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <button><a href="{% url 'home' %}">Back Home</a></button>
+                    <button><a href="{% url 'up_vote' post.id %}">Like this project</a></button>
                     <button><a href="{% url 'post_edit' post.id %}">Edit Project</a></button>
                     <button><a href="{% url 'comment_add_view' post.id %}">Comment on Project</a></button>
                 </div>

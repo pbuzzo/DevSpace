@@ -11,8 +11,8 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ('postapp', '0002_auto_20200720_2117'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('postapp', '__first__'),
     ]
 
     operations = [

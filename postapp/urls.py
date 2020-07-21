@@ -5,6 +5,7 @@ from postapp import views
 urlpatterns = [
     path('add_project/', views.addpost, name='addpost'),
     path('project/<int:id>', views.post, name='post'),
+    path('up_vote/<int:post_id>/', views.up_vote, name='up_vote'),
     path('edit_project/<int:id>', views.post_edit, name='post_edit'),
 
 ]
