@@ -1,28 +1,53 @@
 {% extends 'flow.html' %}
 {% block content %}
 
-<h1>{{data.display_name}}'s Resume</h1>
-{{resume.title}}<br>
-{{resume.name}}<br>
-{{resume.city}},
-{{resume.state}},
-{{resume.country}}<br>
-{{resume.phone}}<br>
-{{resume.email}}<br>
-{{resume.summary}}<br>
-{{resume.education}}<br>
-{{resume.skills}}<br>
-{{resume.employment}}<br>
-{{resume.references}}
+<h1 style="padding: 1rem 1rem 1rem;">{{data.display_name}}'s Resume</h1>
+<div class="post-div" style="height: auto; !important">
+    <h2>Basic Information</h2>
+    <h5>Title: </h5>{{resume.title}}<br>
+    <h5>Name: </h5>{{resume.name}}<br>
+    <h5>Location: </h5>{{resume.city}},
+    {{resume.state}},
+    {{resume.country}}<br>
+    <h5>Phone: </h5>{{resume.phone}}<br>
+    <h5>Email: </h5>{{resume.email}}<br>
+    <h5>{{resume.name}}'s Summary: </h5>{{resume.summary}}<br>
+    {% comment %} {{resume.education}}<br> {% endcomment %}
+    <h5>Skillsets: </h5>{{resume.skills}}<br>
+    {% comment %} {{resume.employment}}<br>
+    {{resume.references}} {% endcomment %}
+</div>
+<div class="post-div" style="height: auto; !important">
+    <h2>Education</h2>
+    <h5>School: </h5>{{education.school}}<br>
+    <h5>Attended: </h5>{{education.start_date}} - {{education.end_date}}<br>
+</div>
+<div class="post-div" style="height: auto; !important">
+    <h2>Employment</h2>
+    <h5>Organization: </h5>{{employment.organization}}<br>
+    <h5>Location: </h5>{{employmenty.city}},{{employment.state}}<br>
+    <h5>Role: </h5>{{employment.role}}<br>
+    <h5>Department: </h5>{{employment.department}}<br>
+    <h5>Dates Employed: </h5>{{employment.start_date}} - {{employment.end_date}}<br>
+</div>
+<div class="post-div" style="height: auto; !important">
+    <h2>References</h2>
+    <h5>Name: </h5>{{references.name}}<br>
+    <h5>Role: </h5>{{references.role}}<br>
+    <h5>Organization: </h5>{{references.organization}}<br>
+    <h5>Phone: </h5>{{references.phone}}<br>
+    <h5>Email: </h5>{{references.email}}<br>
+</div>
 
-{{data}}
+    {% comment %} {{data}} {% endcomment %}
 
-{% if user.is_authenticated %}
-<button><a href='/resume/add/education/'>Add Education!</a></button>
-<button><a href='/resume/add/employment/'>Add Employment!</a></button>
-<button><a href='/resume/add/references/'>Add References!</a></button>
-<button><a href='/resume/add/details/'>Add Details!</a></button>
-<button><a href='/resume/add/'>Add Resume</a></button>
-{% endif %}
+    {% if user.is_authenticated %}
+    <button><a href='/resume/add/education/'>Add Education!</a></button>
+    <button><a href='/resume/add/employment/'>Add Employment!</a></button>
+    <button><a href='/resume/add/references/'>Add References!</a></button>
+    <button><a href='/resume/add/details/'>Add Details!</a></button>
+    <button><a href='/resume/add/'>Add Resume</a></button>
+    {% endif %}
+</div>
 
 {% endblock %}
