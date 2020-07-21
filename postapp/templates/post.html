@@ -28,6 +28,17 @@
         </div>
     </div>
     </div>
+    {% if comments %}
+            <h4>Comments<h4>
+            {% for item in comments%}
+                <div class="comment_div">
+                    <h5>{{ item.text}}<h5><br>
+                    <p>By: {{ item.author }}</p>
+                    <p>Time: {{ item.timestamp }}</p>
+                </div>
+                <br>
+            {% endfor %}
+    {% endif %}
 
 
 
