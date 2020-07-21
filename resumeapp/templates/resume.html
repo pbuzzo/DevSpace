@@ -17,26 +17,38 @@
     {% comment %} {{resume.employment}}<br>
     {{resume.references}} {% endcomment %}
 </div>
+
+
 <div class="post-div" style="height: auto; !important">
     <h2>Education</h2>
-    <h5>School: </h5>{{education.school}}<br>
-    <h5>Attended: </h5>{{education.start_date}} - {{education.end_date}}<br>
+    {% for item in education %}
+        <h5>School: </h5>{{item.school}}<br>
+        <h5>Attended: </h5>{{item.start_date}} - {{item.end_date}}<br>
+        <hr>
+    {% endfor %}
 </div>
+
 <div class="post-div" style="height: auto; !important">
     <h2>Employment</h2>
-    <h5>Organization: </h5>{{employment.organization}}<br>
-    <h5>Location: </h5>{{employmenty.city}},{{employment.state}}<br>
-    <h5>Role: </h5>{{employment.role}}<br>
-    <h5>Department: </h5>{{employment.department}}<br>
-    <h5>Dates Employed: </h5>{{employment.start_date}} - {{employment.end_date}}<br>
+    {% for item in employment %}
+        <h5>Organization: </h5>{{item.organization}}<br>
+        <h5>Location: </h5>{{itemy.city}},{{item.state}}<br>
+        <h5>Role: </h5>{{item.role}}<br>
+        <h5>Department: </h5>{{item.department}}<br>
+        <h5>Dates Employed: </h5>{{item.start_date}} - {{item.end_date}}<br>
+        <hr>
+    {% endfor %}
 </div>
 <div class="post-div" style="height: auto; !important">
     <h2>References</h2>
-    <h5>Name: </h5>{{references.name}}<br>
-    <h5>Role: </h5>{{references.role}}<br>
-    <h5>Organization: </h5>{{references.organization}}<br>
-    <h5>Phone: </h5>{{references.phone}}<br>
-    <h5>Email: </h5>{{references.email}}<br>
+    {% for item in references %}
+        <h5>Name: </h5>{{item.name}}<br>
+        <h5>Role: </h5>{{item.role}}<br>
+        <h5>Organization: </h5>{{item.organization}}<br>
+        <h5>Phone: </h5>{{item.phone}}<br>
+        <h5>Email: </h5>{{item.email}}<br>
+        <hr>
+    {% endfor %}
 </div>
 
     {% comment %} {{data}} {% endcomment %}
