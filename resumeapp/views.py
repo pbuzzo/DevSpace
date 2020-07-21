@@ -8,8 +8,11 @@ from resumeapp.forms import ResumeForm, EducationForm, EmploymentForm, Reference
 def resume(request, username):
     data = Developer.objects.get(username=username)
     resume = Resume.objects.filter(author=request.user).first()
+    education = Education.objects.get(resume=resume)
+    employment = Employment.objects.get(resume=resume)
+    references = References.objects.get(resume=resume)
     print(resume)
-    return render(request, 'resume.html', {'data': data, 'resume': resume })
+    return render(request, 'resume.html', {'data': data, 'resume': resume, 'education': education, 'employment': employment, 'references': references })
 
 
 @login_required
