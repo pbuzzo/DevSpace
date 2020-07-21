@@ -20,11 +20,17 @@ class IndexView(View):
             {'info': info}
         )
 
-# @login_required
-# def signed_in(request, username):
-#     info = Developer.objects.get(username=request.user.username)
-#     # post = Post.objects.get(author=username)
-#     return render(request, 'signedin.html', {'info': info})
+class DeveloperView(View):
+    def get(self, request, id):
+        html = 'developer.html'
+        dev_info = Developer.objects.get(id=id)
+        posts = Post.objects.filter(author=dev_info)
+
+        return render(
+            request,
+            html,
+            {'dev_info': dev_info, 'posts': posts}
+        )
 
 
 def signin(request):

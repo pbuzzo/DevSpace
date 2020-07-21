@@ -1,0 +1,13 @@
+{% extends 'flow.html' %}
+{% block content %}
+
+    <h4>You have {{ notifications_count }} unread notifications</h4>
+    {% for notify in notification %}
+    <ul>
+        <li>{{notify.user}}</li>
+        <li>{{notify.data_created}}</li>
+    </ul>
+    {% endfor %}     
+    <a href="/">Home</a>
+
+{% endblock %}
