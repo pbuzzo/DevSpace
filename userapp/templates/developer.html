@@ -14,14 +14,15 @@
                         {% endif %}
                         <div class="card-body">
                         <h3><a href="/project/{{post.id}}">{{post.title}}</a></h3>
-                        <h5>Project Programming Lanugage:  {{post.get_language_choice_display}}</h5>
+                        <h5>Project Programming Lanugage:  {{ post.get_post_type_display }}</h5>
                         <h5>Description</h5>
                         <p> {{post.description}}</p>
                         <p>Likes: {{post.up_vote}}</p>
                         <p>Time Submitted: {{post.post_time}}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button><a href="{% url 'home' %}">Back Home</a></button>
+                                <button><a href="{% url 'up_vote' post.id %}">Like this project</a></button>
+                                <button><a href="{% url 'comment_add_view' post.id %}">Comment on Project</a></button>
                                 {% comment %} <button><a href="{% url 'post_edit' post.id %}">Edit Project</a></button> {% endcomment %}
                                 {% comment %} <button><a href="{% url 'comment_add_view' post.id %}">Comment on Project</a></button> {% endcomment %}
                             </div>
@@ -33,7 +34,7 @@
             </div>
         </div>
     {% elif posts|length == 0 %}
-        <h3>You have no posts at this time. make a new post <a href="/add_project/">here!</a></h3>
+        <h3>You have no projects at this time. Make a new project <a href="/add_project/">here!</a></h3>
     {% endif %}
     
 
