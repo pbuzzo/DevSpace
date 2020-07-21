@@ -38,11 +38,12 @@ img {
 
 /* styled page divs */
 div.index-div {
-    width: 200%;
+    height: 10rem;
     padding: 2rem;
     border: 3px solid #142635 !important;
     border-radius: 2rem;
     background: white !important;
+
 }
 
 /* Div used for signup, signin */
@@ -56,12 +57,20 @@ div.signup-div {
 
 div.post-div {
     width: 70%;
+    height: 50%;
     padding: 2rem;
     border: 3px solid #142635 !important;
     border-radius: 2rem;
     background: white !important;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     transition: box-shadow 0.3s ease-in-out;
+}
+
+.devs-header {
+    margin-top: 2rem;
+    margin-left: 5.5rem;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .post-div:hover {
@@ -83,3 +92,5 @@ div.comment_div {
 div.comment_div:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
   }
+
+/* Post Div */

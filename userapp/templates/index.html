@@ -1,8 +1,22 @@
 {% extends 'flow.html' %}
 {% block content %}
 
-
-    <section id="feature-one">
+    <h1 class="devs-header">Developers</h1>
+    <HR><BR>
+    <div class="container" style="margin-top: 2rem; !important">
+    <div class="row">
+    {% for item in info %}
+        <div class="col-md-4">
+        <div class="index-div">
+            <p>{{ item.display_name }}</p>
+            <p>{{ item.github_link }}</p>
+            <p>{{ item.bio }}</p>
+        </div>
+        </div>
+    {% endfor %}
+    </div>
+    </div>
+    {% comment %} <section id="feature-one">
         <div class="container">
             <div class="row">
                 <div class="row feature-content">
@@ -15,12 +29,13 @@
                                 <p>{{ item.github_link }}</p>
                                 <p>{{ item.bio }}</p>
                             {% endfor %}
+                            {% for item in %}
                         </div>
                     </div>
                     <div class="mr-3 ml-3 col-lg-5 col-lg-offset-1"></div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> {% endcomment %}
 
 {% endblock %}

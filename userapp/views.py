@@ -29,7 +29,7 @@ def signin(request):
                 )
             if user:
                 login(request, user)
-                return HttpResponseRedirect(reverse('signed_in', kwargs={'username': request.user.username}))
+                return HttpResponseRedirect(reverse('home'))
             return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
 
     form = SignInForm()
