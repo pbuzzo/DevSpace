@@ -5,14 +5,14 @@
         <div class="row">
             {% for post in posts %}
                 <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
+                <div class="card mb-4 shadow-sm" style="border-radius: 2rem;">
                     {% if post.screen_shot %}
-                        <img width="100%" height="300" src='{{ post.screen_shot.url }}' >
+                        <img style="border-radius: 2rem;" width="100%" height="300" src='{{ post.screen_shot.url }}' >
                     {% elif not post.screen_shot %}
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                        <svg class="bd-placeholder-img card-img-top" style="border-radius: 2rem;" width="100%" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/></svg>
                     {% endif %}
                     <div class="card-body">
-                    <h3>{{post.title}}</h3>
+                    <h3><a href="/project/{{post.id}}">{{post.title}}</a></h3>
                     <h5>Project Programming Lanugage:  {{post.get_language_choice_display}}</h5>
                     <h5>Description</h5>
                     <p> {{post.description}}</p>
