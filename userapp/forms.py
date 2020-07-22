@@ -1,4 +1,5 @@
 from django import forms
+from userapp.models import Developer
 
 class SignInForm(forms.Form):
     username = forms.CharField(max_length=50)
@@ -11,6 +12,16 @@ class SignUpForm(forms.Form):
     github_link = forms.URLField(max_length=200, required=False)
 
 
+class EditUserForm(forms.ModelForm):
+    
+    class Meta:
+        model = Developer
+        fields = (
+            'headshot',
+            'bio',
+        )
+
+    
 # class ContactForm(forms.Form):
 #     name = forms.CharField()
 #     message = forms.CharField(widget=forms.Textarea)

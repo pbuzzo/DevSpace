@@ -1,10 +1,10 @@
-from django.shortcuts import render, reverse, HttpResponseRedirect
+from django.shortcuts import render, reverse, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
 
 from userapp.models import Developer
-from userapp.forms import SignInForm, SignUpForm
+from userapp.forms import SignInForm, SignUpForm, EditUserForm
 from postapp.models import Post
 
 
@@ -70,4 +70,19 @@ def signup(request):
             return HttpResponseRedirect(reverse('home'))
 
     form = SignUpForm()
+    return render(request, htm, {'form': form})
+
+
+@login_required
+def edit_user(request, id):
+    htm = 'generic_form_user.html'
+    user = Developer.objects.get(id=id)
+    if request.method == 'POST':
+        form = EditUserForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('dev_page', args=(id,)))
+        return HttpResponse(f'Please return to the form and fix the following errors: {form.errors}')
+
+    form = EditUserForm()
     return render(request, htm, {'form': form})
