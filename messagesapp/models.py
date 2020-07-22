@@ -9,7 +9,6 @@ class Comment(models.Model):
     author = models.ForeignKey(Developer, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(default=datetime.now, blank=True)
     parent_comment = models.ForeignKey(Post, on_delete=models.CASCADE)
-    # parent_comment = models.ForeignKey('self', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['text']

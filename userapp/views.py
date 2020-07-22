@@ -32,6 +32,15 @@ class DeveloperView(View):
             {'dev_info': dev_info, 'posts': posts}
         )
 
+class FourView(View):
+    def get(self, request):
+        html = '404.html'
+        return render(request, html)
+
+class FiveView(View):
+    def get(self, request):
+        html = '500.html'
+        return render(request, html)
 
 def signin(request):
     htm = 'generic_form_user.html'

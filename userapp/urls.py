@@ -8,5 +8,7 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
     path('signup/', views.signup),
     path('signout/', views.signout),
+    path('404', views.FourView.as_view()),
+    path('500', views.FiveView.as_view()),
     # path('<str:username>/', views.signed_in, name='signed_in'),
 ]
