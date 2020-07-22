@@ -7,8 +7,13 @@
     <div class="row">
     {% for item in info %}
         <div class="col-md-4">
-        <div class="index-div">
+        <div class="index-div" style="height: 100%">
             <p><a href="/developer/{{ item.id }}">{{ item.display_name }}</a></p>
+            {% if item.headshot %}
+                <img style="border-radius: 2rem;" height="300" src='/media/{{item.headshot}}' >
+            {% elif not item.headshot %}
+                <svg style="border-radius: 2rem;" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect height="100%" fill="#55595c"/></svg>
+            {% endif %}
             <p>{{ item.github_link }}</p>
             <p>{{ item.bio }}</p>
         </div>

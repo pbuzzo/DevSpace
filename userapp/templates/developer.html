@@ -1,6 +1,22 @@
 {% extends 'flow.html' %}
 {% block content %}
 
+    <div class="index-div" style="width: 70%; height: auto; margin-top: 2rem; margin-left: 2rem;">
+        <h5>Developer: </h5>{{dev_info.display_name}}<br>
+        {% if dev_info.headshot %}
+            <img style="border-radius: 2rem;" height="300" src='/media/{{dev_info.headshot}}' >
+        {% elif not dev_info.headshot %}
+            <svg style="border-radius: 2rem;" height="300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect height="100%" fill="#55595c"/></svg>
+        {% endif %}
+        {% comment %} <img height=300 src='/media/{{dev_info.headshot}}' ><br> {% endcomment %}
+        <h5>Github Link: </h5><a href="{{dev_info.github_link}}">{{dev_info.github_link}}</a><br>
+        <h5>Bio: </h5>{{dev_info.bio}}<br>
+        {% if request.user.display_name == dev_info.display_name %}
+            <button><a href="{% url 'edit_user' dev_info.id %}">Edit User</a></button>
+        {% elif not user.is_authenticated %}
+            <button><a href="{% url 'signin' %}">Sign In To Interact With This User!</a></button>
+        {% endif %}
+    </div>
     {% if posts|length > 0 %}
         <div class="container" style="margin-top: 2rem; !important">
             <div class="row">
