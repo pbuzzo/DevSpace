@@ -17,9 +17,7 @@ class EditUserForm(forms.ModelForm):
     class Meta:
         model = Developer
         fields = (
-            'display_name',
             'headshot',
-            'github_link',
             'bio',
         )
 
