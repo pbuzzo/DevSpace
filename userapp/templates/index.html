@@ -7,7 +7,8 @@
     <div class="row">
     {% for item in info %}
         <div class="col-md-4">
-        <div class="index-div">
+            <div class="card mb-4 shadow-sm">
+            <img style="border-radius: 2rem;" width="100%" height="300" src='{{ item.headshot.url }}' >
             <p><a href="/developer/{{ item.id }}">{{ item.display_name }}</a></p>
             <p>{{ item.github_link }}</p>
             <p>{{ item.bio }}</p>
