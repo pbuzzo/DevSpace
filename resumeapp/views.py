@@ -11,8 +11,7 @@ def resume(request, username):
     education = Education.objects.filter(resume=resume)
     employment = Employment.objects.filter(resume=resume)
     references = References.objects.filter(resume=resume)
-    print(resume)
-    return render(request, 'resume.html', {'data': data, 'resume': resume, 'education': education, 'employment': employment, 'references': references })
+    return render(request, 'resume.html', {'data': data, 'resume': resume, 'education': education, 'employment': employment, 'references': references})
 
 
 @login_required

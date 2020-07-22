@@ -26,12 +26,13 @@ def create_notification(request):
 
 
 def get_notifications(request):
-    html= 'notifications.html'
-    user= Developer.objects.get(id=request.user.id)
+    html = 'notifications.html'
+    user = Developer.objects.get(id=request.user.id)
     notification = Notifications.objects.filter(to_user=user, from_user=False)
-    notifications_count=len(notification)
+    notifications_count = len(notification)
     for pings in notification:
         pings.from_user = True
         pings.save()
+    Notifications.objects.filter(to_user=user, from_user=False).delete()
 
     return render(request, html, {'user': user, 'notification': notification, 'notifications_count': notifications_count})
